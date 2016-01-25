@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,139 +7,173 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.redant.morethancalculator.BasicCalculatorActivity"
     tools:showIn="@layout/activity_basic_calculator"
-    android:orientation="vertical">
+    app:orientation="horizontal"
+    app:columnCount="4"
+    app:rowCount="6">
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/editText"
         android:gravity="center_vertical|right"
         android:singleLine="true"
-        android:layout_weight="2" />
+        app:layout_columnSpan="4"
+        app:layout_gravity="fill_horizontal"
+        app:layout_rowWeight="2"
+        android:textSize="100sp" />
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:columnCount="4"
-        android:rowCount="5"
-        android:orientation="horizontal"
-        android:layout_weight="5">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_clear"
+        android:id="@+id/clearButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_clear"
-            android:id="@+id/clearButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_sign"
+        android:id="@+id/signButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_sign"
-            android:id="@+id/signButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_percent"
+        android:id="@+id/percentButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_percent"
-            android:id="@+id/percentButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_divide"
+        android:id="@+id/divideButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_divide"
-            android:id="@+id/divideButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_seven"
+        android:id="@+id/sevenButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_seven"
-            android:id="@+id/sevenButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_eight"
+        android:id="@+id/eightButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_eight"
-            android:id="@+id/eightButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_nine"
+        android:id="@+id/nineButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_nine"
-            android:id="@+id/nineButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_multiply"
+        android:id="@+id/multiplyButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_multiply"
-            android:id="@+id/multiplyButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_four"
+        android:id="@+id/fourButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_four"
-            android:id="@+id/fourButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_five"
+        android:id="@+id/fiveButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_five"
-            android:id="@+id/fiveButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_six"
+        android:id="@+id/sixButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_six"
-            android:id="@+id/sixButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_minus"
+        android:id="@+id/minusButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_minus"
-            android:id="@+id/minusButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_one"
+        android:id="@+id/oneButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_one"
-            android:id="@+id/oneButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_two"
+        android:id="@+id/twoButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_two"
-            android:id="@+id/twoButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_three"
+        android:id="@+id/threeButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_three"
-            android:id="@+id/threeButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_plus"
+        android:id="@+id/plusButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_plus"
-            android:id="@+id/plusButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_zero"
+        android:id="@+id/zeroButton"
+        app:layout_columnSpan="2"
+        app:layout_gravity="fill_horizontal"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_zero"
-            android:id="@+id/zeroButton"
-            android:layout_columnSpan="2"
-            android:layout_gravity="fill_horizontal" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_dot"
+        android:id="@+id/dotButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_dot"
-            android:id="@+id/dotButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_text_equal"
+        android:id="@+id/equalButton"
+        app:layout_rowWeight="1"
+        app:layout_columnWeight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_text_equal"
-            android:id="@+id/equalButton" />
-    </GridLayout>
-
-</LinearLayout>
+</android.support.v7.widget.GridLayout>
