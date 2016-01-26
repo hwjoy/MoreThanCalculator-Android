@@ -33,6 +33,15 @@ public class BasicCalculatorActivity extends AppCompatActivity implements View.O
 
     private Button[] allButtonArray;
 
+    enum Operator {
+        Plus, Minus, Multiply, Divide
+    }
+
+    private boolean shouldClearText = false;
+    private double lastNumber = 0.0;
+    private Operator lastOperator = null;
+    private boolean shouldUpdateLastNumber = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,44 +95,140 @@ public class BasicCalculatorActivity extends AppCompatActivity implements View.O
 
     @Override
     public void onClick(View v) {
+        String string = mEditText.getText().toString();
         switch (v.getId()) {
             case R.id.clearButton:
                 mEditText.setText(null);
+                lastNumber = 0.0;
+                lastOperator = null;
                 break;
 
             case R.id.signButton:
+                if (!string.isEmpty() && string.equalsIgnoreCase("NaN") && string.equalsIgnoreCase("Infinity")) {
+                    if (string.startsWith("-")) {
+                        mEditText.setText(mEditText.getText().subSequence(1, string.length()));
+                    } else {
+                        mEditText.setText("-" + string);
+                    }
+                }
                 break;
 
-            case R.id.percentButton: {
-                String string = mEditText.getText().toString();
-                double value = Double.parseDouble(string) / 100;
-                mEditText.setText(Double.toString(value));
+            case R.id.percentButton:
+                if (!string.isEmpty()) {
+                    if (string.equals(".")) {
+                        setValueToEditText(0);
+                    } else if (!string.equalsIgnoreCase("NaN") && !string.equalsIgnoreCase("Infinity")) {
+                        double value = Double.parseDouble(string) / 100;
+                        setValueToEditText(value);
+                    }
+                }
                 break;
-            }
 
             case R.id.plusButton:
+                if (!string.isEmpty()) {
+                    lastNumber = Double.parseDouble(string);
+                }
+                lastOperator = Operator.Plus;
+                mEditText.setText(null);
+                shouldUpdateLastNumber = true;
                 break;
 
             case R.id.minusButton:
+                if (!string.isEmpty()) {
+                    lastNumber = Double.parseDouble(string);
+                }
+                lastOperator = Operator.Minus;
+                mEditText.setText(null);
+                shouldUpdateLastNumber = true;
                 break;
 
             case R.id.multiplyButton:
+                if (!string.isEmpty()) {
+                    lastNumber = Double.parseDouble(string);
+                }
+                lastOperator = Operator.Multiply;
+                mEditText.setText(null);
+                shouldUpdateLastNumber = true;
                 break;
 
             case R.id.divideButton:
+                if (!string.isEmpty()) {
+                    lastNumber = Double.parseDouble(string);
+                }
+                lastOperator = Operator.Divide;
+                mEditText.setText(null);
+                shouldUpdateLastNumber = true;
                 break;
 
             case R.id.equalButton:
+                shouldClearText = true;
+                if (lastOperator != null) {
+                    double value = 0.0;
+                    double currentNumber = 0.0;
+                    if (!string.isEmpty()) {
+                        currentNumber = Double.parseDouble(string);
+                    }
+                    switch (lastOperator) {
+                        case Plus:
+                            value = lastNumber + currentNumber;
+                            break;
+
+                        case Minus:
+                            if (shouldUpdateLastNumber) {
+                                value = lastNumber - currentNumber;
+                            } else {
+                                value = currentNumber - lastNumber;
+                            }
+                            break;
+
+                        case Multiply:
+                            value = lastNumber * currentNumber;
+                            break;
+
+                        case Divide:
+                            if (shouldUpdateLastNumber) {
+                                value = lastNumber / currentNumber;
+                            } else {
+                                value = currentNumber / lastNumber;
+                            }
+                            break;
+                    }
+                    setValueToEditText(value);
+                    if (shouldUpdateLastNumber) {
+                        shouldUpdateLastNumber = false;
+                        lastNumber = currentNumber;
+                    }
+                }
                 break;
 
             case R.id.dotButton:
+                if (string.equalsIgnoreCase("NaN") && string.equalsIgnoreCase("Infinity") && !string.contains(".")) {
+                    mEditText.setText(string + ".");
+                }
                 break;
 
             default: {
                 Button button = (Button) v;
-                mEditText.setText(mEditText.getText() + button.getText().toString());
+                if (shouldClearText) {
+                    shouldClearText = false;
+                    mEditText.setText(button.getText().toString());
+                } else {
+                    mEditText.setText(string + button.getText().toString());
+                }
                 break;
             }
+        }
+    }
+
+    private void setValueToEditText(double value) {
+//        NumberFormat numberFormat = NumberFormat.getInstance();
+//        numberFormat.setMinimumFractionDigits(0);
+//        mEditText.setText(numberFormat.format(value));
+
+        if (value - (int) value == 0) {
+            mEditText.setText(Integer.toString((int) value));
+        } else {
+            mEditText.setText(Double.toString(value));
         }
     }
 }
