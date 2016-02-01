@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">MoreThanCalculator</string>
-    <string name="action_settings">Settings</string>
+
     <string name="title_activity_basic_calculator">Basic Calculator</string>
+    <string name="title_activity_tax_calculator">Tax Calculator</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_tax">Tax</string>
 
     <string name="button_text_start">Start</string>
 
@@ -24,5 +28,17 @@
     <string name="button_text_multiply">×</string>
     <string name="button_text_divide">÷</string>
     <string name="button_text_equal">=</string>
+
+    <string name="button_calculator">计算</string>
+    <string name="button_reset">重置</string>
+
+    <string name="taxCalculator_incomeType_title">收入类型</string>
+    <string name="taxCalculator_incomeType_salary">工资、薪金所得</string>
+    <string name="taxCalculator_incomeType_annualBonus">年终奖所得</string>
+    <string name="taxCalculator_preTaxIncome_title">税前工资</string>
+    <string name="taxCalculator_socialInsuranceCharges_title">社会保险费</string>
+    <string name="taxCalculator_lowestTaxableLimit_title">起征额</string>
+    <string name="taxCalculator_taxPayable_title">应缴税款</string>
+    <string name="taxCalculator_afterTaxIncome_title">税后收入</string>
 
 </resources>

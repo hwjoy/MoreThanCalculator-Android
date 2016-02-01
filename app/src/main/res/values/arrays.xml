@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="incomeTypes">
+        <item>@string/taxCalculator_incomeType_salary</item>
+        <item>@string/taxCalculator_incomeType_annualBonus</item>
+    </string-array>
+</resources>

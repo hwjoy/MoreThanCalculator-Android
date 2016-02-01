@@ -27,6 +27,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.redant.morethancalculator.MainActivity" />
         </activity>
+        <activity
+            android:name=".TaxCalculatorActivity"
+            android:label="@string/title_activity_tax_calculator"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.redant.morethancalculator.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
