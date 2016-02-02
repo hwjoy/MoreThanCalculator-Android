@@ -15,7 +15,8 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:shrinkColumns="1">
 
         <TableRow
             android:layout_width="match_parent"
@@ -96,7 +97,9 @@
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/abc_button_padding_vertical_material"
+        android:layout_marginBottom="@dimen/abc_button_padding_vertical_material">
 
         <Button
             android:layout_width="wrap_content"
@@ -112,9 +115,16 @@
             android:id="@+id/resetButton" />
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/taxCalculator_result_headerTitle"
+        android:textColor="@android:color/black" />
+
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:shrinkColumns="1">
 
         <TableRow
             android:layout_width="match_parent"

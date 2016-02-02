@@ -83,19 +83,21 @@ public class TaxCalculatorActivity extends AppCompatActivity {
                     double lowestTaxableLimitValue = Double.parseDouble(mLowestTaxableLimitEditText.getText().toString());
                     double resultValue = preTaxIncomeValue - socialInsuranceChargesValue - lowestTaxableLimitValue;
                     if (resultValue > 80000) {
-                        resultValue = (resultValue - 80000) * 0.45 + (80000 - 55000) * 0.35 + (55000 - 35000) * 0.3 + (35000 - 9000) * 0.25 + (9000 - 4500) * 0.2 + (4500 - 1500) * 0.1 + 1500 * 0.03;
+                        resultValue = resultValue * 0.45 - 13505;
                     } else if (resultValue > 55000) {
-                        resultValue = (resultValue - 55000) * 0.35 + (55000 - 35000) * 0.3 + (35000 - 9000) * 0.25 + (9000 - 4500) * 0.2 + (4500 - 1500) * 0.1 + 1500 * 0.03;
+                        resultValue = resultValue * 0.35 - 5505;
                     } else if (resultValue > 35000) {
-                        resultValue = (resultValue - 35000) * 0.3 + (35000 - 9000) * 0.25 + (9000 - 4500) * 0.2 + (4500 - 1500) * 0.1 + 1500 * 0.03;
+                        resultValue = resultValue * 0.3 - 2775;
                     } else if (resultValue > 9000) {
-                        resultValue = (resultValue - 9000) * 0.25 + (9000 - 4500) * 0.2 + (4500 - 1500) * 0.1 + 1500 * 0.03;
+                        resultValue = resultValue * 0.25 - 1005;
                     } else if (resultValue > 4500) {
-                        resultValue = (resultValue - 4500) * 0.2 + (4500 - 1500) * 0.1 + 1500 * 0.03;
+                        resultValue = resultValue * 0.2 - 555;
                     } else if (resultValue > 1500) {
-                        resultValue = (resultValue - 1500) * 0.1 + 1500 * 0.03;
-                    } else {
+                        resultValue = resultValue * 0.1 - 105;
+                    } else if (resultValue > 0) {
                         resultValue = resultValue * 0.03;
+                    } else {
+                        resultValue = 0;
                     }
                     mTaxPayableEditText.setText(String.format("%.2f", resultValue));
                     mAfterTaxIncomeEditText.setText(String.format("%.2f", preTaxIncomeValue - resultValue - socialInsuranceChargesValue));

@@ -40,5 +40,6 @@
     <string name="taxCalculator_lowestTaxableLimit_title">起征额</string>
     <string name="taxCalculator_taxPayable_title">应缴税款</string>
     <string name="taxCalculator_afterTaxIncome_title">税后收入</string>
+    <string name="taxCalculator_result_headerTitle"><u>计算结果</u></string>
 
 </resources>
