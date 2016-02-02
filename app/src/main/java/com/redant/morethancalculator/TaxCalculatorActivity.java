@@ -67,6 +67,9 @@ public class TaxCalculatorActivity extends AppCompatActivity {
             mTaxPayableEditText.setText(null);
             mAfterTaxIncomeEditText.setText(null);
         } else {
+            double[][] taxArray = {{80000, 0.45, 13505}, {55000, 0.35, 5505}, {35000, 0.3, 2775},
+                    {9000, 0.25, 1005}, {4500, 0.2, 555}, {1500, 0.1, 105}, {0, 0.03, 0}};
+
             double preTaxIncomeValue = Double.parseDouble(mPreTaxIncomeEditText.getText().toString());
 
             int selectedItemPosition = mIncomeTypeSpinner.getSelectedItemPosition();
@@ -82,23 +85,17 @@ public class TaxCalculatorActivity extends AppCompatActivity {
                     double socialInsuranceChargesValue = Double.parseDouble(mSocialInsuranceChargesEditText.getText().toString());
                     double lowestTaxableLimitValue = Double.parseDouble(mLowestTaxableLimitEditText.getText().toString());
                     double resultValue = preTaxIncomeValue - socialInsuranceChargesValue - lowestTaxableLimitValue;
-                    if (resultValue > 80000) {
-                        resultValue = resultValue * 0.45 - 13505;
-                    } else if (resultValue > 55000) {
-                        resultValue = resultValue * 0.35 - 5505;
-                    } else if (resultValue > 35000) {
-                        resultValue = resultValue * 0.3 - 2775;
-                    } else if (resultValue > 9000) {
-                        resultValue = resultValue * 0.25 - 1005;
-                    } else if (resultValue > 4500) {
-                        resultValue = resultValue * 0.2 - 555;
-                    } else if (resultValue > 1500) {
-                        resultValue = resultValue * 0.1 - 105;
-                    } else if (resultValue > 0) {
-                        resultValue = resultValue * 0.03;
+                    if (resultValue > 0) {
+                        for (int i = 0; i < taxArray.length; i++) {
+                            if (resultValue > taxArray[i][0]) {
+                                resultValue = resultValue * taxArray[i][1] - taxArray[i][2];
+                                break;
+                            }
+                        }
                     } else {
                         resultValue = 0;
                     }
+
                     mTaxPayableEditText.setText(String.format("%.2f", resultValue));
                     mAfterTaxIncomeEditText.setText(String.format("%.2f", preTaxIncomeValue - resultValue - socialInsuranceChargesValue));
                     break;
@@ -110,21 +107,17 @@ public class TaxCalculatorActivity extends AppCompatActivity {
 
                     double preMonthValue = preTaxIncomeValue / 12;
                     double resultValue = 0;
-                    if (preMonthValue > 80000) {
-                        resultValue = preTaxIncomeValue * 0.45 - 13505;
-                    } else if (preMonthValue > 55000) {
-                        resultValue = preTaxIncomeValue * 0.35 - 5505;
-                    } else if (preMonthValue > 35000) {
-                        resultValue = preTaxIncomeValue * 0.3 - 2775;
-                    } else if (preMonthValue > 9000) {
-                        resultValue = preTaxIncomeValue * 0.25 - 1005;
-                    } else if (preMonthValue > 4500) {
-                        resultValue = preTaxIncomeValue * 0.2 - 555;
-                    } else if (preMonthValue > 1500) {
-                        resultValue = preTaxIncomeValue * 0.1 - 105;
+                    if (preMonthValue > 0) {
+                        for (int i = 0; i < taxArray.length; i++) {
+                            if (preMonthValue > taxArray[i][0]) {
+                                resultValue = preTaxIncomeValue * taxArray[i][1] - taxArray[i][2];
+                                break;
+                            }
+                        }
                     } else {
-                        resultValue = preTaxIncomeValue * 0.03;
+                        resultValue = 0;
                     }
+
                     mTaxPayableEditText.setText(String.format("%.2f", resultValue));
                     mAfterTaxIncomeEditText.setText(String.format("%.2f", preTaxIncomeValue - resultValue));
                     break;

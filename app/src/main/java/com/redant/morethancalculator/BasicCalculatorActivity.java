@@ -90,6 +90,16 @@ public class BasicCalculatorActivity extends AppCompatActivity implements View.O
         for (Button button: allButtonArray) {
             button.setOnClickListener(this);
         }
+        mClearButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mEditText.getText().clear();
+                lastNumber = 0.0;
+                lastOperator = null;
+                // 是否在长按后再加一个短按动作
+                return true;
+            }
+        });
 
         mNumberFormat = new DecimalFormat();
         mNumberFormat.setMinimumFractionDigits(0);
@@ -110,9 +120,7 @@ public class BasicCalculatorActivity extends AppCompatActivity implements View.O
         double value = parseDouble(string);
         switch (v.getId()) {
             case R.id.clearButton:
-                text.clear();
-                lastNumber = 0.0;
-                lastOperator = null;
+                text.delete(text.length() - 1, text.length());
                 break;
 
             case R.id.signButton:
